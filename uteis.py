@@ -18,16 +18,16 @@ ESCOLHA:
   
         try:
             escolha = int(escolha)
-            
-            break
+            if escolha in (1,2,3,4,999):
+                break
+            else:
+                print('\033[;31;1mVALOR INVÁLIDO!!TENTE NOVAMENTE\033[m')
+                escolha = input('Digite um número:')
 
         except ValueError:
             print('\033[;31;1mVALOR INVÁLIDO!!TENTE NOVAMENTE\033[m')
             escolha = input('Digite um número:')
 
-        if escolha not in (1,2,3,4,999):
-            print('\033[;31;1mVALOR INVÁLIDO!!TENTE NOVAMENTE\033[m')
-            escolha = input('Digite um número:')
     return escolha
 
 
