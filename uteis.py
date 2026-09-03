@@ -1,7 +1,7 @@
-def titulo():
-    print('-'*30)
-    print(f'{'ORGANIZADOR DE PRODUTOS':^30}')
-    print('-'*30)
+def titulo(msg):
+    print('-'*40)
+    print(f'{msg:^40}')
+    print('-'*40)
 
 def menu():
     escolha = input('''
@@ -64,6 +64,12 @@ def cadastro():
 
 def listagem(lista):
 
+    titulo('LISTAGEM DE ESTOQUE')
+    print(f'ITEM{'NOME':^10}{'UNIDADE':^10}{'VALOR UNI':^10}')
+    print('-'*40)
+
     for ind, prod in enumerate(lista):
-        for v in prod.valuer():
-            print(f'{ind + 1}. {v}')
+        print(f'{f'{ind + 1}.':<4}', end='')
+        for v in prod.values():
+            print(f'{v:^10}', end='')
+        print()
