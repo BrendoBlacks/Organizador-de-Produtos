@@ -8,9 +8,8 @@ def menu():
 MENU DE ESCOLHA, DIGITE:
 [ 1 ] CADASTRAR
 [ 2 ] EXCLUIR
-[ 3 ] ADICIONAR
-[ 4 ] ALTERAR VALOR
-[ 5 ] VER ITENS
+[ 3 ] EDITAR ITENS
+[ 4 ] VER ITENS
 [ 999 ] PARA ENCERAR
 
 ESCOLHA:
@@ -62,4 +61,9 @@ def cadastro():
                     print('\033[;31;1mVALOR INVÁLIDO!!TENTE NOVAMENTE.\033[m')
                     produto['valor'] = input('Digite o valor do produto: R$')
     return produto
-                    
+
+def listagem(lista):
+
+    for ind, prod in enumerate(lista):
+        for v in prod.valuer():
+            print(f'{ind + 1}. {v}')
