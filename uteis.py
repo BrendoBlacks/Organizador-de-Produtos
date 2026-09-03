@@ -73,3 +73,4 @@ def listagem(lista):
         for v in prod.values():
             print(f'{v:^10}', end='')
         print()
+
