@@ -4,7 +4,8 @@ def titulo(msg):
     print('-'*40)
 
 def menu():
-    escolha = input('''
+    print('-'*40)
+    escolha = input(f'''
 MENU DE ESCOLHA, DIGITE:
 [ 1 ] CADASTRAR
 [ 2 ] EXCLUIR
@@ -12,8 +13,12 @@ MENU DE ESCOLHA, DIGITE:
 [ 4 ] VER ITENS
 [ 999 ] PARA ENCERAR
 
-ESCOLHA:
-''')
+{'-'*40}
+
+ESCOLHA: ''')
+
+    print()
+
     while True:
   
         try:
@@ -32,6 +37,8 @@ ESCOLHA:
 
 
 def cadastro():
+    print('-'*40)
+
     produto = {}
     produto['nome'] = input('Digite o nome do produto: ').lower()
 
@@ -73,4 +80,6 @@ def listagem(lista):
         for v in prod.values():
             print(f'{v:^10}', end='')
         print()
+
+    print('-'*40)
 
