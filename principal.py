@@ -14,6 +14,9 @@ while True:
     elif escolha == 2:
         uteis.excluir(produtos)
 
+    elif escolha == 3:
+        uteis.editar(produtos)
+
     elif escolha == 4:
         uteis.listagem(produtos)
 

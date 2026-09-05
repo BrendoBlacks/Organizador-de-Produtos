@@ -107,3 +107,36 @@ def excluir(lista):
     print('-'*40)
     
     del lista[escolha_excluir]
+
+def editar(lista):
+    listagem(lista)
+    item_editar = input('Qual item você deseja editar? ')
+    while True:
+        try:
+            item_editar = int(item_editar) - 1
+
+            if item_editar > (len(lista) - 1) or item_editar < 0:
+                print('\033[;31;1mEsse item não está na lista. Tente novamente!\033[m')
+                item_editar = input('Qual item você deseja editar? ')
+                continue
+
+            break
+
+        except ValueError:
+            print('\033[;31;1mValor inválido!! Tente novamente.\033[m')
+            item_editar = input('Qual item você deseja editar? ')
+
+    valor_editar = input(f'O que você deseja editar do item "{lista[item_editar]['nome']}"? "nome", "valor" ou "quantidade":  ').lower().strip()
+
+    while valor_editar not in ('nome', 'valor', 'quantidade'):
+        print('\033[;31;1mValor inválido!! Tente novamente.\033[m')
+        valor_editar = input(f'O que você deseja editar do item "{lista[item_editar]['nome']}"? "nome", "valor" ou "quantidade":  ').lower().strip()
+
+    if valor_editar == 'nome':
+        lista[item_editar][valor_editar] = input('Digite o novo nome: ')
+
+    elif valor_editar == 'valor':
+        lista[item_editar][valor_editar] = input('Digite o novo valor: ')
+
+    elif valor_editar == 'quantidade':
+        lista[item_editar][valor_editar] = input('Digite a nova quantidade: ')
