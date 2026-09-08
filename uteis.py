@@ -92,7 +92,7 @@ def excluir(lista):
         try:
             escolha_excluir = int(escolha_excluir) - 1
     
-            if escolha_excluir >= (len(lista) - 1) or escolha_excluir < 0:
+            if escolha_excluir >= len(lista) or escolha_excluir < 0:
                 print('\033[;31;1mItem inválido!! Tente novamente.\033[m')
                 escolha_excluir = input('Escolha qual item excluir: ')
                 continue

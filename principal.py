@@ -23,5 +23,3 @@ while True:
     elif escolha == 999:
         print('FIM DA INTERAÇÃO...')
         break
-
-print(produtos)
