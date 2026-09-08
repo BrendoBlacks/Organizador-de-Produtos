@@ -31,31 +31,16 @@ def cadastro():
     produto = {}
     produto['nome'] = input('Digite o nome do produto: ').lower()
 
-    produto['quantidade'] = input('Digite a quantidade do produto: ')
-    while True:
-        try:
-            produto['quantidade'] = int(produto['quantidade'])
-            if produto['quantidade'] > 0:
-                break
-            else:
-                print('\033[;31;1mNÃO PODE ADICIONAR NÚMEROS NEGATIVOS\033[m')
-                produto['quantidade'] = input('Digite a quantidade do produto: ')
-        except ValueError:
-            print('\033[;31;1mVALOR INVÁLIDO!!TENTE NOVAMENTE.\033[m')
-            produto['quantidade'] = input('Digite a quantidade do produto: ')
+    produto['quantidade'] = validar_inteiro(input('Digite a quantidade do produto: '))
+    while produto['quantidade'] < 0:
+        print('\033[;31;1mNÃO PODE ADICIONAR VALORES NEGATIVOS\033[m')
+        produto['quantidade'] = validar_inteiro(input('Digite a quantidade do produto: '))
 
-    produto['valor'] = input('Digite o valor do produto: R$').replace(',','.')
-    while True:
-            try:
-                produto['valor'] = float(produto['valor'])
-                if produto['valor'] > 0:
-                    break
-                else:
-                    print('\033[;31;1mNÃO PODE ADICIONAR VALORES NEGATIVOS\033[m')
-                    produto['valor'] = input('Digite o valor do produto: ').replace(',','.')
-            except ValueError:
-                    print('\033[;31;1mVALOR INVÁLIDO!!TENTE NOVAMENTE.\033[m')
-                    produto['valor'] = input('Digite o valor do produto: R$').replace(',','.')
+    produto['valor'] = validar_float(input('Digite o valor do produto: R$').replace(',','.'))
+    while produto['valor'] < 0:
+            print('\033[;31;1mNÃO PODE ADICIONAR VALORES NEGATIVOS\033[m')
+            produto['valor'] = validar_float(input('Digite o valor do produto: R$').replace(',','.'))
+   
     titulo('CADASTRO FEITO COM SUCESSO!!!!')
     return produto
 
