@@ -5,7 +5,7 @@ def titulo(msg):
 
 def menu():
     print('-'*40)
-    escolha = input(f'''
+    escolha = validar_inteiro(input(f'''
 MENU DE ESCOLHA, DIGITE:
 [ 1 ] CADASTRAR
 [ 2 ] EXCLUIR
@@ -15,27 +15,16 @@ MENU DE ESCOLHA, DIGITE:
 
 {'-'*40}
 
-ESCOLHA: ''')
+ESCOLHA: '''))
 
     print()
 
-    while True:
-  
-        try:
-            escolha = int(escolha)
-            if escolha in (1,2,3,4,5,999):
-                break
-            else:
-                print('\033[;31;1mVALOR INVÁLIDO!!TENTE NOVAMENTE\033[m')
-                escolha = input('Digite um número:')
-
-        except ValueError:
-            print('\033[;31;1mVALOR INVÁLIDO!!TENTE NOVAMENTE\033[m')
-            escolha = input('Digite um número:')
+    while escolha not in (1,2,3,4,999):
+        print('\033[;31;1mVALOR INVÁLIDO!!! TENTE NOVAMENTE.\033[m')
+        escolha = validar_inteiro(input('Digite um número válido: '))
 
     return escolha
-
-
+        
 def cadastro():
     print('-'*40)
 
@@ -169,3 +158,23 @@ def editar(lista):
                 lista[item_editar][valor_editar] = input('Digite a nova quantidade: ')
 
     titulo('ALTERAÇÃO FEITA COM SUCESSO!!!')
+
+def validar_inteiro(num):
+    while True:
+        try:
+            num = int(num)
+            break
+        except ValueError:
+            print('\033[;31;1mValor inválido!! Tente novamente.\033[m')
+            num = input('Digite um número válido: ')
+    return num
+
+def validar_float(num):
+    while True:
+        try:
+            num = float(num)
+            break
+        except ValueError:
+            print('\033[;31;1mValor inválido!! Tente novamente.\033[m')
+            num = input('Digite um número válido: ')
+    return num
