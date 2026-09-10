@@ -60,22 +60,13 @@ def listagem(lista):
 
 def excluir(lista):
     listagem(lista)
-    escolha_excluir = input('Escolha qual item excluir: ')
-    
+    escolha_excluir = validar_inteiro(input('Escolha qual item excluir: ')) - 1
     while True:
-        try:
-            escolha_excluir = int(escolha_excluir) - 1
-    
-            if escolha_excluir >= len(lista) or escolha_excluir < 0:
-                print('\033[;31;1mItem inválido!! Tente novamente.\033[m')
-                escolha_excluir = input('Escolha qual item excluir: ')
-                continue
-    
+        if escolha_excluir >= len(lista) or escolha_excluir < 0:
+            print('\033[;31;1mVALOR INVÁLIDO!!!Tente novamente\033[m')
+            escolha_excluir = validar_inteiro(input('Escolha qual item excluir: ')) - 1
+        else:
             break
-    
-        except ValueError:
-            print('\033[;31;1mItem inválido!! 2 Tente novamente.\033[m')
-            escolha_excluir = input('Escolha qual item excluir: ')
             
     print('-'*40)
     print(f'{f'ITEM {escolha_excluir + 1}. {lista[escolha_excluir]['nome']} EXCLUIDO!!':^40}')

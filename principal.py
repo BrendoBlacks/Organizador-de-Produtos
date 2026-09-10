@@ -12,13 +12,25 @@ while True:
         produtos.append(uteis.cadastro())
 
     elif escolha == 2:
-        uteis.excluir(produtos)
+        if len(produtos) == 0:
+            print('\033[;31;1mNÃO TEM ITENS NA LISTA PARA SEREM EXCLUIDOS\033[m')
+            continue
+        else:
+            uteis.excluir(produtos)
 
     elif escolha == 3:
-        uteis.editar(produtos)
+        if len(produtos) == 0:
+            print('\033[;31;1mNÃO TEM ITENS NA LISTA PARA SEREM EDITADOS\033[m')
+            continue
+        else:
+            uteis.editar(produtos)
 
     elif escolha == 4:
-        uteis.listagem(produtos)
+        if len(produtos) == 0:
+            print('\033[;31;1mNÃO TEM ITENS NA LISTA PARA SEREM EXIBIDOS\033[m')
+            continue
+        else:
+            uteis.listagem(produtos)
 
     elif escolha == 999:
         print('FIM DA INTERAÇÃO...')
