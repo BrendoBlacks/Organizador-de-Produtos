@@ -29,10 +29,10 @@ def cadastro():
     print('-'*40)
 
     produto = {}
-    produto['nome'] = input('Digite o nome do produto: ').lower()
+    produto['nome'] = input('Digite o nome do produto: ').lower().strip()
     while produto['nome'] == '':
         print('\033[;31;1mO PRODUTO PRECISA DE UM NOME!!!\033[m')
-        produto['nome'] = input('Digite o nome do produto: ').lower()
+        produto['nome'] = input('Digite o nome do produto: ').lower().strip()
 
     produto['quantidade'] = validar_inteiro(input('Digite a quantidade do produto: '))
     while produto['quantidade'] <= 0:
@@ -95,10 +95,10 @@ def editar(lista):
         valor_editar = input(f'O que você deseja editar do item "{lista[item_editar]['nome']}"? "nome", "valor" ou "quantidade":  ').lower().strip()
 
     if valor_editar == 'nome':
-        lista[item_editar][valor_editar] = input('Digite o novo nome: ')
+        lista[item_editar][valor_editar] = input('Digite o novo nome: ').lower().strip()
         while lista[item_editar][valor_editar] == '':
             print('\033[;31;1mO PRODUTO PRECISA DE UM NOME!!!\033[m')
-            lista[item_editar][valor_editar] = input('Digite o novo nome: ').lower()
+            lista[item_editar][valor_editar] = input('Digite o novo nome: ').lower().strip()
 
     elif valor_editar == 'valor':
         lista[item_editar][valor_editar] = validar_float(input('Digite o novo valor: ').replace(',','.'))
