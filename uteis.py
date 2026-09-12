@@ -30,15 +30,18 @@ def cadastro():
 
     produto = {}
     produto['nome'] = input('Digite o nome do produto: ').lower()
+    while produto['nome'] == '':
+        print('\033[;31;1mO PRODUTO PRECISA DE UM NOME!!!\033[m')
+        produto['nome'] = input('Digite o nome do produto: ').lower()
 
     produto['quantidade'] = validar_inteiro(input('Digite a quantidade do produto: '))
-    while produto['quantidade'] < 0:
-        print('\033[;31;1mNÃO PODE ADICIONAR VALORES NEGATIVOS\033[m')
+    while produto['quantidade'] <= 0:
+        print('\033[;31;1mNÃO PODE ADICIONAR 0 OU VALORES NEGATIVOS\033[m')
         produto['quantidade'] = validar_inteiro(input('Digite a quantidade do produto: '))
 
     produto['valor'] = validar_float(input('Digite o valor do produto: R$').replace(',','.'))
-    while produto['valor'] < 0:
-            print('\033[;31;1mNÃO PODE ADICIONAR VALORES NEGATIVOS\033[m')
+    while produto['valor'] <= 0:
+            print('\033[;31;1mNÃO PODE ADICIONAR 0 OU VALORES NEGATIVOS\033[m')
             produto['valor'] = validar_float(input('Digite o valor do produto: R$').replace(',','.'))
    
     titulo('CADASTRO FEITO COM SUCESSO!!!!')
@@ -93,6 +96,9 @@ def editar(lista):
 
     if valor_editar == 'nome':
         lista[item_editar][valor_editar] = input('Digite o novo nome: ')
+        while lista[item_editar][valor_editar] == '':
+            print('\033[;31;1mO PRODUTO PRECISA DE UM NOME!!!\033[m')
+            lista[item_editar][valor_editar] = input('Digite o novo nome: ').lower()
 
     elif valor_editar == 'valor':
         lista[item_editar][valor_editar] = validar_float(input('Digite o novo valor: ').replace(',','.'))
@@ -100,7 +106,7 @@ def editar(lista):
             if lista[item_editar][valor_editar] > 0:
                 break
             else:
-                print('\033[;31;1mNÃO PODE ADICIONAR NÚMEROS NEGATIVOS\033[m')
+                print('\033[;31;1mNÃO PODE ADICIONAR 0 OU VALORES NEGATIVOS\033[m')
                 lista[item_editar][valor_editar] = validar_float(input('Digite o novo valor: ').replace(',','.'))
 
     elif valor_editar == 'quantidade':
@@ -109,7 +115,7 @@ def editar(lista):
             if lista[item_editar][valor_editar] > 0:
                 break
             else:
-                print('\033[;31;1mNÃO PODE ADICIONAR NÚMEROS NEGATIVOS\033[m')
+                print('\033[;31;1mNÃO PODE ADICIONAR 0 OU VALORES NEGATIVOS\033[m')
                 lista[item_editar][valor_editar] = validar_inteiro(input('Digite a nova quantidade: '))
 
     titulo('ALTERAÇÃO FEITA COM SUCESSO!!!')
