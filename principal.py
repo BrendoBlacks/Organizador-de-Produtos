@@ -9,7 +9,17 @@ while True:
     escolha = uteis.menu()
 
     if escolha == 1:
-        produtos.append(uteis.cadastro())
+        produto = uteis.cadastro()
+        produto_existe = False
+        
+        for p in produtos:
+            if produto['nome'] == p['nome']:
+                produto_existe = True
+
+        if produto_existe:
+            print('\033[;31;1mEsse Produto Já Está Cadastrado!!! Tente novamente\033[m')
+        else:
+            produtos.append(produto)
 
     elif escolha == 2:
         if len(produtos) == 0:
