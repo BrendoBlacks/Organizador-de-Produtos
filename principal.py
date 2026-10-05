@@ -31,14 +31,14 @@ while True:
     elif escolha == 3:
         if len(produtos) == 0:
             print('\033[;31;1mNÃO TEM ITENS NA LISTA PARA SEREM EDITADOS\033[m')
-            continue
+    
         else:
             uteis.editar(produtos)
 
     elif escolha == 4:
         if len(produtos) == 0:
             print('\033[;31;1mNÃO TEM ITENS NA LISTA PARA SEREM EXIBIDOS\033[m')
-            continue
+    
         else:
             uteis.listagem(produtos)
 

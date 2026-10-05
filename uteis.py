@@ -95,10 +95,17 @@ def editar(lista):
         valor_editar = input(f'O que você deseja editar do item "{lista[item_editar]['nome']}"? "nome", "valor" ou "quantidade":  ').lower().strip()
 
     if valor_editar == 'nome':
-        lista[item_editar][valor_editar] = input('Digite o novo nome: ').lower().strip()
-        while lista[item_editar][valor_editar] == '':
+        novo_nome = input('Digite o novo nome: ').lower().strip()
+
+        while novo_nome == '':
             print('\033[;31;1mO PRODUTO PRECISA DE UM NOME!!!\033[m')
-            lista[item_editar][valor_editar] = input('Digite o novo nome: ').lower().strip()
+            novo_nome = input('Digite o novo nome: ').lower().strip()
+
+        while any(p['nome'] == novo_nome for i, p in enumerate(lista) if i != item_editar):
+            print('\033[;31;1mEsse produto já está cadastrado!! Tente novamente.\033[m')
+            novo_nome = input('Digite o novo nome: ').lower().strip()
+        
+        lista[item_editar][valor_editar] = novo_nome
 
     elif valor_editar == 'valor':
         lista[item_editar][valor_editar] = validar_float(input('Digite o novo valor: ').replace(',','.'))
